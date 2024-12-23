@@ -1,12 +1,12 @@
 import { defineConfig, devices } from "@playwright/test";
-
 import * as dotenv from "dotenv";
 import * as path from "path";
+import { pwPracticalTaskOptions } from "./fixtures/apiEndpoints";
 dotenv.config({
   path: path.resolve(__dirname, `./env/.env.${process.env.TEST_ENV}`),
 });
 
-export default defineConfig({
+export default defineConfig<pwPracticalTaskOptions>({
   testDir: "./tests",
   /* Run tests in files in parallel */
   fullyParallel: false,
@@ -22,6 +22,7 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
+    apiBaseUrl: "https://reqres.in/api",
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: "on-first-retry",
@@ -66,14 +67,14 @@ export default defineConfig({
     },
 
     /* Test against branded browsers. */
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-    // },
+    {
+      name: "Microsoft Edge",
+      use: { ...devices["Desktop Edge"], channel: "msedge" },
+    },
+    {
+      name: "Google Chrome",
+      use: { ...devices["Desktop Chrome"], channel: "chrome" },
+    },
   ],
 
   /* Run your local dev server before starting the tests */
