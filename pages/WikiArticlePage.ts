@@ -18,7 +18,7 @@ export default class WikiArticlePage {
   constructor(page: Page) {
     this.page = page;
     this.header = new WikiHeader(page);
-    this.title = page.locator(".mw-page-title-main");
+    this.title = page.locator("h1").locator(".mw-page-title-main");
     this.editLink = page.locator("#ca-edit");
     this.viewHistoryLink = page.locator("#ca-history");
     this.helpLink = page.locator("#mw-indicator-mw-helplink");

@@ -31,16 +31,20 @@ export default defineConfig<pwPracticalTaskOptions>({
 
   /* Configure projects for major browsers */
   projects: [
-    // {
-    //   name: "wiki",
-    //   grep: /@wikipedia/,
-    //   use: { ...devices["Desktop Chrome"] },
-    // },
-    // {
-    //   name: "wiki",
-    //   grep: /@wikipedia/,
-    //   use: { ...devices["Desktop Safari"] },
-    // },
+    {
+      name: "ui",
+      grep: /@ui/,
+      use: { ...devices["Desktop Chrome"] },
+    },
+    {
+      name: "ui",
+      grep: /@ui/,
+      use: { ...devices["Desktop Safari"] },
+    },
+    {
+      name: "api",
+      grep: /@api/,
+    },
     {
       name: "chromium",
       use: { ...devices["Desktop Chrome"] },
